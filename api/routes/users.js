@@ -60,4 +60,90 @@ router.get("/:id", async (req, res) => {
     }
 })
 
+
+// Follow a user
+router.post("/:id/follow", async (req, res) => {
+    if (req.body.userId !== req.params.id) {
+      try {
+        const user = await User.findById(req.params.id);
+        const currentUser = await User.findById(req.body.userId);
+        if (!user.followers.includes(req.body.userId)) {
+          await user.updateOne({ $push: { followers: req.body.userId } });
+          await currentUser.updateOne({ $push: { following: req.params.id } });
+          res.status(200).json("User has been followed");
+        } else {
+          res.status(403).json("You already follow this user");
+        }
+      } catch (err) {
+        res.status(500).json(err);
+      }
+    } else {
+      res.status(403).json("You cannot follow yourself");
+    }
+  });
+  
+  // Unfollow a user
+  router.put("/:id/unfollow", async (req, res) => {
+    if (req.body.userId !== req.params.id) {
+      try {
+        const user = await User.findById(req.params.id);
+        const currentUser = await User.findById(req.body.userId);
+        if (user.followers.includes(req.body.userId)) {
+          await user.updateOne({ $pull: { followers: req.body.userId } });
+          await currentUser.updateOne({ $pull: { following: req.params.id } });
+          res.status(200).json("User has been unfollowed");
+        } else {
+          res.status(403).json("You don't follow this user");
+        }
+      } catch (err) {
+        res.status(500).json(err);
+      }
+    } else {
+      res.status(403).json("You cannot unfollow yourself");
+    }
+  });
+
+
+// Get followers of a user
+router.get("/:id/followers", async (req, res) => {
+  try {
+      const user = await User.findById(req.params.id);
+      if (!user) {
+          return res.status(404).json("User not found");
+      }
+      const followers = await Promise.all(
+          user.followers.map(followerId => User.findById(followerId))
+      );
+      const followerList = followers.map(follower => {
+          const { _id, username, profilePic } = follower;
+          return { _id, username, profilePic };
+      });
+      res.status(200).json(followerList);
+  } catch (err) {
+      res.status(500).json(err);
+  }
+});
+
+
+// Get followings of a user
+router.get("/:id/followings", async (req, res) => {
+  try {
+      const user = await User.findById(req.params.id);
+      if (!user) {
+          return res.status(404).json("User not found");
+      }
+      const followings = await Promise.all(
+          user.following.map(followingId => User.findById(followingId))
+      );
+      const followingList = followings.map(following => {
+          const { _id, username, profilePic } = following;
+          return { _id, username, profilePic };
+      });
+      res.status(200).json(followingList);
+  } catch (err) {
+      res.status(500).json(err);
+  }
+});
+
+
 module.exports = router

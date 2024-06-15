@@ -22,7 +22,7 @@ export default function Sidebar() {
           src="https://images.unsplash.com/photo-1716384953735-be258c0aa9e4?q=80&w=1895&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="about"
         />
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis iusto voluptas voluptatem corrupti dignissimos nostrum, rem sed sit ex inventore, porro aliquam deserunt atque doloremque pariatur consequuntur quasi veniam voluptatum.</p>
+        <p>Welcome to Voyager, where every journey begins with a story waiting to unfold.At Voyager, we believe in the transformative power of travel. It's not just about ticking off bucket list items; it's about immersing yourself in cultures, tasting local flavors, and creating memories that last a lifetime. From pristine beaches to bustling cityscapes, tranquil mountains to vibrant festivals, our goal is to inspire and guide you on your next adventure.</p>
       </div>
       <div className="sidebarItem">
         <span className="sidebarTitle">CATEGORIES</span>

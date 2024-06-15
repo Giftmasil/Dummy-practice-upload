@@ -1,15 +1,46 @@
-.headers {
-  width: 732px;
-  height: 40px;
-  top: 146px;
-  left: 28px;
-  gap: 0px;
-  opacity: 0px;
-  font-family: Inter;
-  font-size: 36px;
-  font-weight: 400;
-  line-height: 58.09px;
-  letter-spacing: 0.04em;
-  text-align: left;
+/* General styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
+.header {
+  width: 100%;
+  background-color: white; 
+  color: black;/* Set background color to white */
+}
+
+.headers {
+  color: black; /* Set text color to black */
+  display: flex;
+  align-items: center; /* Align items vertically in the center */
+  padding: 20px 0;
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center; /* Center-align text */
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 1200px) {
+  .headers {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .headers {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 15px 0;
+  }
+
+  .headers {
+    font-size: 18px;
+  }
 }

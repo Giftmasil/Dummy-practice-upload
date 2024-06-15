@@ -1,84 +1,198 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.enclosure {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+}
+
 .write {
-    padding-top: 50px;
-  }
-  
-  .writeImg {
-    width: 730px;
-    height: 500px;
-    top: 325px;
-    left: 29px;
-    gap: 0px;
-    opacity: 0px;
-    padding-left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+}
 
-  }
-  
+.writeForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 900px;
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.writeFormGroup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.unit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.title {
+  font-size: 1.5rem;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 2px solid #333;
+  outline: none;
+  width: 100%;
+}
+
+.catsAndWriting {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  margin-left: 2rem;
+}
+
+.cats {
+  font-size: 1.5rem;
+  border: none;
+  border-bottom: 2px solid #333;
+  outline: none;
+  width: 100%;
+}
+
+.writeIcon {
+  font-size: 2rem;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.writeImg {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.writeInput {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  border: 1px solid #ddd;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  background: #d9d9d9;
+  border-radius: 4px;
+}
+
+.writeText {
+  height: 40vh;
+  font-size: 1.2rem;
+  width: 100%;
+  resize: vertical;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.writeSubmit {
+  margin-top: 10px;
+  background-color: green;
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background-color 0.3s;
+  align-self: flex-start;
+}
+
+.writeSubmit:hover {
+  background-color: #555;
+}
+
+/* Media queries for responsiveness */
+@media screen and (min-width: 576px) {
   .writeForm {
-    width: 824px;
-height: 542px;
-top: 328px;
-left: 876px;
-gap: 0px;
-opacity: 0px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 
-  }
-  
   .writeFormGroup {
-    margin-left: 150px;
-    display: flex;
-    align-items: center;
+    width: 48%;
   }
-  
-  .writeIcon {
-    width: 25px;
-    height: 25px;
-    font-size: 20px;
-    border: 1px solid;
-    border-radius: 50%;
-    color: rgb(115, 112, 112);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
+
+  .writeImg {
+    max-height: 300px;
   }
-  
-  .writeInput {
-    font-size: 30px;
-    border: none;
-    padding: 20px;
-    width: 70vw;
-  }
-  
-  .writeInput::placeholder {
-    color: rgb(116, 113, 113);
-    font-weight: 400;
-  }
-  
-  .writeInput:focus {
-    outline-style: none;
-  }
-  
+
   .writeText {
-    width: 70vw;
-    height: 70vh;
-    font-family: inherit;
-    font-size: 20px;
+    width: 100%;
   }
-  
-  .writeSubmit {
-    position: absolute;
-    top: 20px;
-    right: 50px;
-    color: white;
-    background-color: teal;
+}
+
+@media screen and (max-width: 768px) {
+  .write {
     padding: 10px;
-    border: none;
-    border-radius: 10px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    &:hover {
-      filter: brightness(120%);
-    }
   }
+
+  .writeForm {
+    padding: 15px;
+  }
+
+  .title, .cats, .writeInput, .writeText {
+    font-size: 1rem;
+    padding: 8px;
+  }
+
+  .writeIcon {
+    font-size: 1.5rem;
+  }
+
+  .writeSubmit {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .writeForm {
+    padding: 10px;
+  }
+
+  .title, .cats, .writeInput, .writeText {
+    font-size: 0.875rem;
+    padding: 6px;
+  }
+
+  .writeIcon {
+    font-size: 1.25rem;
+  }
+
+  .writeSubmit {
+    font-size: 0.875rem;
+    padding: 6px 12px;
+  }
+
+  .writeImg {
+    max-height: 200px;
+  }
+
+  .writeText {
+    height: 30vh;
+  }
+}

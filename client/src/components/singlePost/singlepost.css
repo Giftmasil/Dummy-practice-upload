@@ -118,3 +118,25 @@
   align-self: flex-end;
   margin-top: 20px;
 }
+
+.follow {
+  font-size: 0.5em;
+  color: white;
+  font-weight: bold;
+  padding: 7px;
+  cursor: pointer;
+  background-color: blue;
+  border-radius: 7px;
+  list-style-type: none;
+}
+
+.unfollowButton {
+  font-size: 0.5em;
+  color: white;
+  font-weight: bold;
+  padding: 7px;
+  cursor: pointer;
+  background-color: blue;
+  border-radius: 7px;
+  list-style-type: none;
+}

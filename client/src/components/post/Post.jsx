@@ -1,5 +1,3 @@
-// Post.jsx
-
 import { useContext, useState } from "react";
 import "./post.css";
 import { Link } from "react-router-dom";
@@ -15,6 +13,8 @@ export default function Post({ post }) {
   const [comments, setComments] = useState(post.comments);
   const [displayComments, setDisplayComments] = useState(false);
 
+  
+
   const handleLike = async () => {
     try {
       if (isLiked) {
@@ -22,6 +22,17 @@ export default function Post({ post }) {
         setLikes(likes.filter((id) => id !== user._id));
       } else {
         await axios.put(`/posts/${post._id}/like`, { userId: user._id });
+  
+        // Create like notification
+        const newNotification = {
+          type: "like",
+          senderId: user._id,
+          receiverId: post.userId,
+          postId: post._id,
+          text: `${user.username} liked your post.`, // Corrected notification text
+        };
+        await axios.post("/notifications", newNotification);
+  
         setLikes([...likes, user._id]);
       }
       setIsLiked(!isLiked);
@@ -29,7 +40,7 @@ export default function Post({ post }) {
       console.error("Error liking post:", err);
     }
   };
-
+  
   const handleComment = async (e) => {
     e.preventDefault();
     try {
@@ -38,13 +49,24 @@ export default function Post({ post }) {
         username: user.username,
         text: comment,
       });
-      setComments(res.data); // Update the comments state with the new comments
-      setComment(""); // Clear the comment input after successful submission
+      setComments(res.data); // Update comments state with new comments
+  
+      // Create comment notification
+      const newNotification = {
+        type: "comment",
+        senderId: user._id,
+        receiverId: post.userId,
+        postId: post._id,
+        text: `${user.username} commented on your post.`, // Corrected notification text
+      };
+      await axios.post("/notifications", newNotification);
+      
+      setComment(""); // Clear comment input after submission
     } catch (err) {
       console.error("Error adding comment:", err);
     }
   };
-
+  
   const toggleComments = () => {
     setDisplayComments(!displayComments);
   };

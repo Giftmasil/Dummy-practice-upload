@@ -1,196 +1,212 @@
+/* topbar.css */
+
+/* General styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Times New Roman', Times, serif, sans-serif;
+}
+
 .top {
+  width: 100%;
+  background: #D9D9D9;
+  color: rgb(8, 5, 5);
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100%;
-  background-color: #D9D9D9;
+  position: relative;
 }
 
 .topContainer {
+  width: 100%;
+  max-width: 1200px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  max-width: 1200px;
   padding: 10px 20px;
 }
 
-.left {
-  flex: 1;
+.left, .center, .right {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.center {
-  flex: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.right {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
   align-items: center;
 }
 
 .topTitle {
-  font-size: 2.9em;
-  font-weight: 800;
+  color: blue;
+  font-size: 48px;
+  font-weight: bold;
   font-family: 'Times New Roman', Times, serif;
   font-style: oblique;
 }
 
 .topList {
-  display: flex;
   list-style: none;
-  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
 }
 
 .topMostListContainer {
   margin: 0 10px;
+  cursor: pointer;
   position: relative;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+}
+
+
+
+.dropdownItem {
+  padding: 10px 20px;
+  cursor: pointer;
+  color: black;
+}
+
+.dropdownItem:hover {
+  background-color: #555;
+}
+
+.arrow {
+  margin-left: 5px;
+  font-size: 12px;
+}
+
+.arrow.up {
+  transform: rotate(180deg);
 }
 
 .Search {
   display: flex;
   align-items: center;
-  margin-right: 20px;
 }
 
 .searchButton {
   background: none;
   border: none;
+  color: white;
   cursor: pointer;
 }
 
 .searchInput {
-  border: 1px solid #ccc;
+  border: none;
+  padding: 5px;
+  margin-left: 5px;
   border-radius: 4px;
-  padding: 5px 10px;
-  margin-left: 10px;
 }
 
 .topImg {
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   object-fit: cover;
-  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.topListItem {
+  color: white;
+  font-weight: bold;
+  padding: 7px;
+  cursor: pointer;
+  background-color: blue;
+  border-radius: 7px;
+  list-style-type: none;
 }
 
 .logOut {
-  cursor: pointer;
   margin-left: 10px;
-  background-color: #00008B;
+}
+
+.loginLink, .registerLink {
+  margin-left: 10px;
   color: white;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  text-decoration: none;
 }
 
-.logOut:hover {
-  background-color: #00006B; /* Slightly darker blue on hover */
-}
-
-.dropdownMenu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #e3cff3;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  z-index: 1;
-}
-
-.dropdownItem {
-  padding: 10px 20px;
+/* Menu button for small screens */
+.menuButton {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
   cursor: pointer;
 }
 
-.dropdownItem:hover {
-  background-color: #f1f1f1;
-}
-
-.arrow {
-  margin-left: 5px;
-  font-size: 0.8em;
-}
-
-.arrow.up::before {
-  content: "▲";
-}
-
-.arrow.down::before {
-  content: "▼";
-}
-
-.mainChatBot {
-  margin-left: 20px;
-}
-
-.topAnchor {
-  text-decoration: none;
-  color: inherit;
-}
-
-
-@media screen and (min-width: 200px) {
-  .topNavigation{display: none;}
-  .smallSearch {
-    display: flex;
-  }
-  .bigSearch {display: none;}
-  .font {font-size: 20px;}
-  .color {color: whitesmoke;}
-  .mainChatBot {display: none;}
-}
-
-@media screen and (min-width: 720px) {
-  .topNavigation{display: flex;}
-  .smallSearch {display: none;}
-  .bigSearch {display: flex;}
-  .font {
-    font-size: 50px;
-    margin-left: 2.5rem;
-  }
-  .animations {
-    font-size: 1rem;
-    background-color: white;
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-    padding: .75rem;
-    animation: 5s ease-in-out 1s normal forwards slide;
-  }
-
-  .mainChatBot {
-    display: block;
-  }
-}
-
-@keyframes slide {
-  0% {
-    transform: translateY(-200%);
-  }
-  20% {
-    transform: translateY(50%);
-  }
-  40% {
-    transform: translateY(-50%);
-  }
-  60% {
-    transform: translateY(50%);
-  }
-  80% {
-    transform: translateY(-50%);
-  }
-  99% {
-    transform: translateY(0);
-  }
-  100% {
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .topList {
     display: none;
+  }
+
+  .topList.open {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menuButton {
+    display: block;
+    color: blue; 
+  }
+
+  .dropdownMenu {
+    top: 40px;
+    width: 100%;
+    left: 0;
+    border-radius: 0;
+  }
+}
+
+/* Media queries for even smaller screens */
+@media (max-width: 480px) {
+
+  .top {
+    background: #D9D9D9;
+    color: rgb(8, 5, 5);
+  }
+  .topContainer {
+    background-color: #D9D9D9;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 10px;
+    margin-right: 7px;
+  }
+   
+
+  .topTitle {
+    font-size: 20px;
+  }
+
+  .link {
+    color: black;
+    text-decoration: none;
+  }
+  
+  .topImg {
+    width: 0px;
+    height: 0px;
+  }
+
+  .searchInput {
+    max-width: 0px;
+    background-color: #D9D9D9;
+    border: none;
+  }
+
+  .dropdownMenu {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    background-color: black;
+    color: black;
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    width: 200px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   }
 }

@@ -80,3 +80,17 @@
         filter: brightness(110%);
     }
   }
+
+  @media (max-width: 768px) {
+    .dark {
+      width: 80%;
+      padding: 15px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .dark {
+      width: 90%;
+      padding: 10px;
+    }
+  }

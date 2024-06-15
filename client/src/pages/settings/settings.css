@@ -6,6 +6,32 @@
 }
 
 .settingsIntro {
+  margin: 0 auto;
+  display: flex;
+  width: 95vw;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notificationsDropdown {
+  background-color: rgba(0, 0, 0, 0.144);
+  max-height: 9rem;
+  overflow: scroll;
+  width: 15rem;
+}
+
+.notificationRead {
+  color: green;
+  cursor: pointer;
+}
+
+.notificationUnread {
+  color: red;
+  cursor: pointer;
+}
+
+.settingsIntro {
   display: flex;
 }
 

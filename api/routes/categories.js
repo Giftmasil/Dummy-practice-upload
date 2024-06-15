@@ -12,7 +12,6 @@ router.post("/", async (req, res) => {
 });
 
 router.get("/", async (req, res) => {
-    console.log("GET /api/categories hit"); // Add this line to log when the route is hit
     try {
       const cats = await Category.find();
       res.status(200).json(cats);

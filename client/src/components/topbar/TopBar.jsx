@@ -15,6 +15,7 @@ export default function Topbar() {
   const [isCategoriesDropdownOpen, setIsCategoriesDropdownOpen] = useState(false);
   const [isMoreDropdownOpen, setIsMoreDropdownOpen] = useState(false);
   const [categories, setCategories] = useState([]);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const PF = "http://localhost:5000/images/";
 
   useEffect(() => {
@@ -56,14 +57,13 @@ export default function Topbar() {
     navigate(`/destination?place=${destination}`);
   };
 
-  /* const handleCategoryClick = (categoryName) => {
-    setIsCategoriesDropdownOpen(false);
-    navigate(`/?cat=${categoryName}`);
-  }; */
-
   const handleMoreClick = (page) => {
     setIsMoreDropdownOpen(false);
     navigate(`/${page}`);
+  };
+
+  const handleMenuClick = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   const destinations = ["South America", "Australia", "Kenya", "South Africa"];
@@ -76,7 +76,7 @@ export default function Topbar() {
           <span className="topTitle">Voyager</span>
         </div>
         <div className="center">
-          <ul className="topList">
+          <ul className={`topList ${isMenuOpen ? "open" : ""}`}>
             <li className="topMostListContainer">
               <Link className="link" to="/">
                 HOME
@@ -132,6 +132,9 @@ export default function Topbar() {
               )}
             </li>
           </ul>
+          <button className="menuButton" onClick={handleMenuClick}>
+            <i className="fas fa-bars"></i>
+          </button>
         </div>
         <div className="right">
           <form className="Search" onSubmit={handleSearch}>
@@ -151,7 +154,7 @@ export default function Topbar() {
               <Link className="link" to="/settings">
                 <img
                   className="topImg"
-                  src={PF + user.profilePic || "https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"}
+                  src={user.profilePic ? PF + user.profilePic : "https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"}
                   alt="user"
                 />
               </Link>
