@@ -14,7 +14,7 @@ export default function SinglePost() {
   const [updateMode, setUpdateMode] = useState(false);
   const { user, dispatch } = useContext(Context);
   const [isFollowing, setIsFollowing] = useState(false);
-  const PF = "http://localhost:5000/images/";
+  const PF = "https://dummy-practice-upload.onrender.com/images/";
 
   useEffect(() => {
     const getPost = async () => {

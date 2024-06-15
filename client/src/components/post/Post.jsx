@@ -5,7 +5,7 @@ import axios from "axios";
 import { Context } from "../../context/Context";
 
 export default function Post({ post }) {
-  const PF = "http://localhost:5000/images/";
+  const PF = "https://dummy-practice-upload.onrender.com/images/";
   const { user } = useContext(Context);
   const [likes, setLikes] = useState(post.likes);
   const [isLiked, setIsLiked] = useState(post.likes.includes(user._id));
